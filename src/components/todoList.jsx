@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import TodoItem from "./todoItem";
+import { TodoContext } from "../context/todoContext";
 
-const TodoList = ({ todoData, deleteTodo }) => {
+const TodoList = ({ deleteTodo }) => {
+  const { todos } = useContext(TodoContext);
   return (
     <div>
-      {todoData?.map((todo, index) => {
+      {todos?.map((todo, index) => {
         return (
           <TodoItem
             key={index}
