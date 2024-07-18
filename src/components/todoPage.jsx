@@ -8,24 +8,35 @@ const url =
 
 function TodoPage() {
   const params = useParams();
-  const todoId = params.id;
-  // const [todoData, setTodoData] = useState(null);
+  var todoId = params.id;
+  const [todoData, setTodoData] = useState(null);
 
-  // useEffect(() => {
-  //   const fetchTodo = async () => {
-  //     const { data } = await axios.get(
-  //       `https://worker-silent-rice-13ca.devsujay.workers.dev/api/todos?id=${todoId - 1}`,
-  //     );
-  //     console.log(data);
-  //     if (data.data) {
-  //       setTodoData(data.data);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchTodo = async () => {
+      const { data } = await axios.get(
+        `https://worker-silent-rice-13ca.devsujay.workers.dev/api/todos?id=${todoId}`,
+      );
+      console.log(data);
+      if (data.data) {
+        setTodoData(data.data);
+      }
+    };
 
-  //   fetchTodo();
-  // }, [todoId]);
+    fetchTodo();
+  }, [todoId]);
 
-  return <div>todo {todoId}</div>;
+  return (
+    <div>
+      {todoData ? (
+        <span>
+          <h2>{todoData.title} </h2>
+          <p>{todoData.description} </p>
+        </span>
+      ) : (
+        "loading.."
+      )}
+    </div>
+  );
 }
 
 export default TodoPage;
