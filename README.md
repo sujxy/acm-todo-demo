@@ -1,4 +1,4 @@
-##Run it locally
+## Run it locally
 
 ```
 git clone git@github.com:sujxy/acm-todo-demo.git
